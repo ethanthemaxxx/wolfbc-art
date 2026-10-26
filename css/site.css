@@ -479,3 +479,6 @@ body { background: #afafaf; }
 .index-dot { color: var(--on-accent); box-shadow: 0 6px 22px rgba(186, 251, 74, .3); }
 .index-btn:hover .index-dot { background: #cfff7d; }
 .tag-new, .menu-new { color: var(--red); }
+
+/* badge wordmark: dark grey on the green */
+.badge-word { color: #2b2b2b; }
