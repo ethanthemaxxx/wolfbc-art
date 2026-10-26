@@ -80,6 +80,8 @@
 
   /* ---------- badge: drifts with the scroll velocity, springs back ---------- */
   var badge = $('.badge');
+  /* wide screens: the tall badge slides out from under the sheet shortly after load */
+  if (badge) setTimeout(function () { badge.classList.add('is-in'); }, 200);
   if (badge && !reduce) {
     var pos = 0, vel = 0, lastY = window.scrollY, lastT = 0, raf = 0, CAP = 22;
     var step = function (t) {
