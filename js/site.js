@@ -204,6 +204,20 @@
     $$('[data-reveal]').forEach(function (el) { el.style.opacity = 1; });
   }
 
+  /* ---------- footer arches: outlines drift into place and the gradient lifts while scrolling in ---------- */
+  if (hasGsap && !reduce) {
+    $$('[data-arch]').forEach(function (a) {
+      var st = { trigger: a, start: 'top bottom', end: 'bottom bottom', scrub: 1 };
+      gsap.fromTo($('.arch-outline--outer', a), { y: 60 }, { y: 0, ease: 'none', scrollTrigger: st });
+      gsap.fromTo($('.arch-outline--mid', a), { y: 30 }, { y: 0, ease: 'none', scrollTrigger: st });
+      gsap.fromTo($('.arch-mid', a), { attr: { offset: .85 } }, { attr: { offset: .4 }, ease: 'none', scrollTrigger: st });
+      gsap.fromTo($$('.arch-links > *', a), { opacity: 0, y: 24 }, { opacity: 1, y: 0, stagger: .08, duration: .9, ease: 'power2.out', scrollTrigger: { trigger: a, start: 'top 60%', toggleActions: 'play none none none' } });
+    });
+    $$('.pillar').forEach(function (p) {
+      gsap.fromTo(p, { y: 80, opacity: 0 }, { y: 0, opacity: 1, ease: 'none', scrollTrigger: { trigger: p, start: 'top bottom', end: 'bottom bottom', scrub: 1 } });
+    });
+  }
+
   /* ---------- fade slider: click = next, drag/flick, line dots, wraps around ---------- */
   $$('[data-slider]').forEach(function (root) {
     var vp = $('.slider-viewport', root), slides = $$('.slide', root), dots = $$('.slider-dot', root), count = $('.slider-count', root);
